@@ -1,44 +1,54 @@
 #include <iostream>
 #include <string>
+#include "menu.h"
 #include "Patient.h"
+#include "patientList.h"
+#include "dentist.h"
+#include "waitingRoomQueue.h"
+#include "appointment.h"
+#include "admin.h"
 
-// Function to create a new patient by asking the user for input
-Patient createPatientFromInput() {
-  std::string fname, lname, dob, phone, email;
-
-  std::cout << "Enter Patient First Name: ";
-  std::cin >> fname;
-  std::cout << "Enter Patient Last Name: ";
-  std::cin >> lname;
-  std::cout << "Enter Patient DOB (MM-DD-YYYY): ";
-  std::cin >> dob;
-  std::cout << "Enter Patient Phone Number: ";
-  std::cin >> phone;
-  std::cin >> phone;
-  std::cout << "Enter Patient Email: ";
-  std::cin >> email;
-
-  return Patient(fname, lname, dob, phone, email);
-}
 
 int main() {
-  int optionSelection;
-  std::cout << "Welcome to our Dental Clinic\n" 
-    << "Select from the options below\n"
-    << "1. Patient Registeration\n"
-    << "2. Schedule an appointment\n"
-    << "3. View available Dentists\n"
-    << "4. View upcoming appointments\n"
-    << "5. View Patient information and medical history";
-  // implement try catch exception
-  std::cin >> optionSelection;
-  if (optionSelection == 1) {
-    std::cout << "Please enter the patient's information below:\n";
-    Patient newPatient = createPatientFromInput();
-    // Further processing with newPatient can be done here, like adding to patient records.
-  }
-  else if (optionSelection == 2) {
 
-  } 
+patientList patientList;
+  int optionSelection;
+
+  while (true) {
+    displayMainMenu();
+    std::cin >> optionSelection;
+
+    if (optionSelection == 0) {
+      break; // Exit the program if the user selects 0
+    }
+
+    switch (optionSelection) {
+      case 1:
+        patientMenu(patientList); // Call a function to handle patient registration menu
+        break;
+      case 2:
+        // Call a function to handle dentist registration menu
+        break;
+      case 3:
+        // Call a function to handle patient search menu
+        break;
+      case 4:
+        // Call a function to handle schedule appointment menu
+        break;
+      case 5:
+        // Call a function to handle view available dentists menu
+        break;
+      case 6:
+        // Call a function to handle view upcoming appointments menu
+        break;
+      case 7:
+        // Call a function to handle view patient information and medical history menu
+        break;
+      default:
+        std::cerr << "Invalid option selected." << std::endl;
+        break;
+    }
+  }
+
   return 0;
 }
