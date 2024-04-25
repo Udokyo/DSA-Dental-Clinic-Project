@@ -3,67 +3,40 @@
 
 #include "Patient.h"
 #include "dentist.h"
-#include <ctime>
 #include <string>
 #include <vector>
 
 class Appointment {
 private:
+  std::string appointmentId;
   Patient patient;
   Dentist dentist;
-  time_t appointmentTime;
-  std::string appointmentId;
-  std::string serviceName;
-  std::string serviceType;
-  std::string dentistNotes;
-  std::string dentistPrescription;
-  std::string cost;
-  std::string patientFeedback;
   std::string appointmentDate;
-  std::string appointmentStatus;
-
-  // Add more relevant attributes as needed
+  std::string appointmentTime;
+  std::string reason;
 
 public:
   Appointment() = default;
-  Appointment(const Patient &patient, const Dentist &dentist,
-              time_t appointmentTime, const std::string &appointmentId,
-              const std::string &serviceName, const std::string &serviceType,
-              const std::string &dentistNotes,
-              const std::string &dentistPrescription, const std::string &cost,
-              const std::string &patientFeedback,
-              const std::string &appointmentDate,
-              const std::string &appointmentStatus);
+  Appointment(const std::string &appointmentId, const Patient &patient,
+              const Dentist &dentist, const std::string &appointmentDate,
+              const std::string &appointmentTime,
+              const std::string &reason);
+  std::string generateAppointmentID() const;
 
   // Getters
+  std::string getAppointmentId() const;
   Patient getPatient() const;
   Dentist getDentist() const;
-  time_t getAppointmentTime() const;
-  std::string getAppointmentId() const;
-  std::string getServiceName() const;
-  std::string getServiceType() const;
-  std::string getDentistNotes() const;
-  std::string getDentistPrescription() const;
-  std::string getCost() const;
-  std::string getPatientFeedback() const;
   std::string getAppointmentDate() const;
-  std::string getAppointmentStatus() const;
+  std::string getAppointmentTime() const;
+  std::string getReason() const;
 
   // Setters
   void setPatient(const Patient &patient);
   void setDentist(const Dentist &dentist);
-  void setAppointmentTime(time_t appointmentTime);
-  void setAppointmentId(const std::string &appointmentId);
-  void setServiceName(const std::string &serviceName);
-  void setServiceType(const std::string &serviceType);
-  void setDentistNotes(const std::string &dentistNotes);
-  void setDentistPrescription(const std::string &dentistPrescription);
-  void setCost(const std::string &cost);
-  void setPatientFeedback(const std::string &patientFeedback);
   void setAppointmentDate(const std::string &appointmentDate);
-  void setAppointmentStatus(const std::string &appointmentStatus);
-
-  // Add getters and setters for other attributes
+  void setAppointmentTime(const std::string &appointmentTime);
+  void setReason(const std::string &reason);
 };
 
 #endif // APPOINTMENT_H
